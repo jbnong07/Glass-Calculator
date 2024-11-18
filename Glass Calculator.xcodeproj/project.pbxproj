@@ -14,7 +14,7 @@
 		7A147F072CE73C50009A2CF6 /* Exceptions for "Glass Calculator" folder in "Glass Calculator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Source/Info.plist,
 			);
 			target = 7A147EF42CE73C4E009A2CF6 /* Glass Calculator */;
 		};
