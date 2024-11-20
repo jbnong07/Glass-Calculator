@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Glass Calculator
 //
-//  Created by 박진홍 on 11/18/24.
+//  Created by 박진홍 on 11/20/24.
 //
 /*
  최상위 StackView 아래에 디스플레이 + 4*4의 버튼 + 3*1의 버튼
@@ -10,12 +10,27 @@
 import UIKit
 
 class ContentView: UIView {
-    private let buttonChar = [
-        ["C", "±", "%", "÷"],
-        ["7", "8", "9", "×"],
-        ["4", "5", "6", "-"],
-        ["1", "2", "3", "+"],
-        ["0", ".", "="]
-    ]
+    init(){
+        super.init(frame: .zero)
+        setContentView()
+        setButtons()
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func setContentView(){
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    private func setButtons(){
+        let mainStack = MainStack()
+        addSubview(mainStack)
+        
+        NSLayoutConstraint.activate([
+            mainStack.topAnchor.constraint(equalTo: self.topAnchor),
+            mainStack.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            mainStack.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+    }
 }

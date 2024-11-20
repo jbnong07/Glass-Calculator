@@ -2,7 +2,7 @@
 //  BackgroundView.swift
 //  Glass Calculator
 //
-//  Created by 박진홍 on 11/19/24.
+//  Created by 박진홍 on 11/20/24.
 //
 import UIKit
 
