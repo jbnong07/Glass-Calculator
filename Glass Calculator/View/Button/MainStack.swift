@@ -14,6 +14,7 @@ class MainStack: UIStackView {
         ["7", "8", "9", "×"]
     ]
     private let zeroRowButtons: [String] = ["0", ".", "="]
+    private(set) var rows: [UIStackView] = []
     
     init() {
         super.init(frame: .zero)
@@ -35,9 +36,12 @@ class MainStack: UIStackView {
     private func setButtonRow(buttonsArr: [[String]]){
         for buttons in buttonsArr {
             let buttonRow = RowStack(buttonTitle: buttons)
+            rows.append(buttonRow)
             addArrangedSubview(buttonRow)
         }
         let zeroRow = ZeroRowStack(titles: zeroRowButtons)
+        rows.append(zeroRow)
         addArrangedSubview(zeroRow)
     }
+    
 }

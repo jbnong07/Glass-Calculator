@@ -10,10 +10,13 @@
 import UIKit
 
 class ContentView: UIView {
+    private(set) var mainStack: MainStack = MainStack()
+    private var display: DisplayView = DisplayView()
+    
     init(){
         super.init(frame: .zero)
         setContentView()
-        setButtons()
+        setUI()
     }
     
     required init?(coder: NSCoder) {
@@ -22,12 +25,15 @@ class ContentView: UIView {
     private func setContentView(){
         translatesAutoresizingMaskIntoConstraints = false
     }
-    private func setButtons(){
-        let mainStack = MainStack()
+    private func setUI(){
         addSubview(mainStack)
-        
+        addSubview(display)
         NSLayoutConstraint.activate([
-            mainStack.topAnchor.constraint(equalTo: self.topAnchor),
+            display.topAnchor.constraint(equalTo: self.topAnchor),
+            display.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            display.heightAnchor.constraint(equalToConstant: 100),
+            display.widthAnchor.constraint(equalTo: self.widthAnchor),
+            mainStack.topAnchor.constraint(equalTo: display.bottomAnchor,constant: 10),
             mainStack.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             mainStack.trailingAnchor.constraint(equalTo: self.trailingAnchor)

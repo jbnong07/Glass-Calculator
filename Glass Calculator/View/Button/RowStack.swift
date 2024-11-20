@@ -7,6 +7,8 @@
 import UIKit
 
 class RowStack: UIStackView {
+    private(set) var buttons: [UIButton] = []
+    
     init(buttonTitle: [String]) {
         super.init(frame: .zero)
         setButton(titles: buttonTitle)
@@ -20,6 +22,7 @@ class RowStack: UIStackView {
     private func setButton(titles: [String]) {
         for title in titles {
             let button = CircleButton(title: title, alpha: 0.3)
+            buttons.append(button)
             addArrangedSubview(button)
         }
     }
