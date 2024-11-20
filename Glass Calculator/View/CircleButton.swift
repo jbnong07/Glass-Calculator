@@ -55,14 +55,14 @@ extension CircleButton {
         shadow.backgroundColor = UIColor.clear.cgColor
         
         shadow.shadowColor = UIColor.white.withAlphaComponent(0.5).cgColor // 반투명 흰색 그림자
-        shadow.shadowOffset = CGSize(width: -2, height: -2) // 그림자가 위 왼쪽 방향으로 약간 이동
+        shadow.shadowOffset = CGSize(width: -2, height: -2)
         shadow.shadowOpacity = 1
-        shadow.shadowRadius = 5 // 그림자의 확산 반경
+        shadow.shadowRadius = 5 // 그림자의 확산 정도
         
-        //그림자를 내부로 보이기 위함
-        let maskLayer = CALayer() // 마스크 레이어 생성
+        //그림자를 내부로 보이기 위한 마스크레이
+        let maskLayer = CALayer()
         maskLayer.frame = bounds.insetBy(dx: -20, dy: -20) // 마스크 크기를 확장하여 내부 그림자 영역 설정
-        maskLayer.backgroundColor = UIColor.black.cgColor // 마스크의 기본 색상
+        maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.cornerRadius = layer.cornerRadius + 20 // 둥근 모서리를 버튼보다 더 크게 설정
         maskLayer.borderColor = UIColor.white.cgColor // 마스크 경계의 색상을 흰색으로 설정
         maskLayer.borderWidth = 20 // 마스크의 경계 너비
@@ -74,7 +74,9 @@ extension CircleButton {
     // 버튼 크기가 변경될 때 블러 효과와 그림자를 업데이트
     override func layoutSubviews() {
         super.layoutSubviews()
-        blurEffectView.layer.cornerRadius = layer.cornerRadius // 버튼의 둥근 모서리에 블러 반경 맞춤
+        let radius = min(bounds.width, bounds.height) / 2
+            layer.cornerRadius = radius
+            blurEffectView.layer.cornerRadius = radius
     }
 }
 
