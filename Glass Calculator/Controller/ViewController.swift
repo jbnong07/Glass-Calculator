@@ -8,14 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    let contentView = ContentView()
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundView = BackgroundView()
-        let contentView = ContentView()
+       
         
         setupBackground(backgroundView: backgroundView)
         setupContentView(contentView: contentView)
+    }
+    
+    func asdf() {
+        
     }
 }
 extension ViewController {
@@ -32,10 +36,11 @@ extension ViewController {
     private func setupContentView(contentView: ContentView) {
         view.addSubview(contentView)
         NSLayoutConstraint.activate([
+//            contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
             contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            contentView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.25) // 4:5 비율
+            contentView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.25,constant: 110) // 4:5 비율
         ])
     }
 }
