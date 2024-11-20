@@ -18,7 +18,8 @@ class CircleButton: UIButton {
     
     private func setButton(title: String, alpha: CGFloat) {//버튼 커스텀
         setTitle(title, for: .normal)
-        setTitleColor(.white, for: .normal)
+        titleLabel?.font = UIFont.systemFont(ofSize: 36, weight: .medium)
+        setTitleColor(.white.withAlphaComponent(0.9), for: .normal)
         backgroundColor = .lightGray.withAlphaComponent(alpha)
         translatesAutoresizingMaskIntoConstraints = false
     }
