@@ -10,10 +10,12 @@
 import UIKit
 
 class ContentView: UIView {
+    private var calculatorData: CalculatorData
     private(set) var mainStack: MainStack = MainStack()
-    private var display: DisplayView = DisplayView()
+    private(set) var display: DisplayView = DisplayView()
     
-    init(){
+    init(calculatorData: CalculatorData){
+        self.calculatorData = calculatorData
         super.init(frame: .zero)
         setContentView()
         setUI()

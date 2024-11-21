@@ -24,3 +24,10 @@ class DisplayLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
+
+extension DisplayLabel {
+    func updateDisplayNum(newNum: Double) {
+        let formattedNum = (newNum == floor(newNum) ? String(Int(newNum)) : String(newNum))
+        self.text = String(newNum)
+    }
+}

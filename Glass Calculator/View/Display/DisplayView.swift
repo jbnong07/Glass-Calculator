@@ -7,7 +7,7 @@
 import UIKit
 
 class DisplayView: UIView {
-    private let displayLabel: DisplayLabel = DisplayLabel()
+    private(set) var displayLabel: DisplayLabel = DisplayLabel()
 
     init() {
         super.init(frame: .zero)
