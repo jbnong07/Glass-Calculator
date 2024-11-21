@@ -18,26 +18,25 @@ class ViewController: UIViewController {
         setupContentView(contentView: contentView)
         setButtonMethod()
     }
-    
 }
-extension ViewController {//UI업데이트
-    func updateData() {
-        
-    }
-}
+
 extension ViewController {//버튼 메서드
     func setButtonMethod() {
         for row in contentView.mainStack.rows {
             for button in row.buttons {
-                button.addTarget(self, action: #selector(buttonTabbed(_:)), for: .touchUpInside)
+                button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             }
         }
     }
     //object-c 런타임에서 호출되기 때문에 반드시 @objc를 붙여야 함.
-    @objc func buttonTabbed(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         self.calculatorData.calculate(title: sender.titleLabel?.text)
-        contentView.display.displayLabel.updateDisplayNum(newNum: Double(String(calculatorData.displayNumber) + (sender.titleLabel?.text ?? "")) ?? calculatorData.displayNumber)
-        print("\(String(describing: sender.titleLabel?.text)) was tabbed")
+        updateUI()
+      
+    }
+    
+    func updateUI() {
+        contentView.display.displayLabel.updateDisplayNum(newNum: self.calculatorData.statusData.displayNumber)
     }
 }
 

@@ -26,8 +26,9 @@ class DisplayLabel: UILabel {
 }
 
 extension DisplayLabel {
-    func updateDisplayNum(newNum: Double) {
+    func updateDisplayNum(newNum: String) {
+        guard let newNum = Double(newNum) else { return }
         let formattedNum = (newNum == floor(newNum) ? String(Int(newNum)) : String(newNum))
-        self.text = String(newNum)
+        self.text = String(formattedNum)
     }
 }
