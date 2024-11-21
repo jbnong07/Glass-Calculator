@@ -7,6 +7,7 @@
 import UIKit
 
 class ZeroRowStack: UIStackView {
+    private(set) var buttons: [UIButton] = []
     let spacingSize: CGFloat = 10
     
     init(titles: [String]) {
@@ -23,19 +24,20 @@ class ZeroRowStack: UIStackView {
         axis = .horizontal
         alignment = .fill
         distribution = .fill
-        spacing = spacingSize
+        spacing = 10
         translatesAutoresizingMaskIntoConstraints = false
     }
-    private func setButtons(titles: [String]) {
+    private func setButtons(titles: [String]) {//고차함수랑 배열 이용한 리팩 필요함,,,
         let buttonAlpha: CGFloat = 0.3
-        
-        // 0 버튼 (두 칸 차지)
         let zeroButton = CircleButton(title: titles[0], alpha: buttonAlpha)
         let equalButton = CircleButton(title: titles[2], alpha: buttonAlpha)
         let dotButton = CircleButton(title: titles[1], alpha: buttonAlpha)
+        buttons.append(zeroButton)
+        buttons.append(dotButton)
+        buttons.append(equalButton)
         addArrangedSubview(zeroButton)
-        addArrangedSubview(equalButton)
         addArrangedSubview(dotButton)
+        addArrangedSubview(equalButton)
         
         NSLayoutConstraint.activate([
             zeroButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5, constant: (-1 * spacingSize / 2)),

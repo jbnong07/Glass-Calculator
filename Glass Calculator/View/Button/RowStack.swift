@@ -8,6 +8,7 @@ import UIKit
 
 class RowStack: UIStackView {
     private(set) var buttons: [UIButton] = []
+    let spacingSize: CGFloat = 10
     
     init(buttonTitle: [String]) {
         super.init(frame: .zero)
@@ -31,7 +32,7 @@ class RowStack: UIStackView {
         axis = .horizontal
         alignment = .fill
         distribution = .fillEqually
-        spacing = 10
+        spacing = spacingSize
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
