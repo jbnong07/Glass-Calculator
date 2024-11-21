@@ -98,11 +98,11 @@ extension CalculatorData {
             },
             .symbol(.negate): { [weak self] in
                 guard let self = self else { return }
-                
+                self.negateTapped()
             },
             .symbol(.clear): { [weak self] in
                 guard let self = self else { return }
-                
+                self.clearTapped()
             },
             .symbol(.allClear): { [weak self] in
                 guard let self = self else { return }
@@ -153,8 +153,13 @@ extension CalculatorData {
     
     private func negateTapped() {
         if let num = Double(self.statusData.displayNumber) {
-            self.statusData.displayNumber = String(num * -1)
+            let formattedNum = (num == floor(num) ? String(Int(num) * -1) : String(num * -1))
+            self.statusData.displayNumber = formattedNum
         }
+    }
+    
+    private func clearTapped() {
+        self.statusData.displayNumber = "0"
     }
 }
 
