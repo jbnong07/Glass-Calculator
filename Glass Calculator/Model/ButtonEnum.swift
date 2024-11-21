@@ -38,7 +38,7 @@ enum Buttons: Equatable, Hashable {
 }
 
 extension Buttons {
-    static func from(title: String) -> Buttons? {
+    static func getButtonCase(title: String) -> Buttons? {
         switch title {
         case "1":
             return .number(.one)
