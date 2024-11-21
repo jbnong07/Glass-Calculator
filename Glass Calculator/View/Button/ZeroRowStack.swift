@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class ZeroRowStack: UIStackView {
+class ZeroRowStack: UIStackView, ButtonStackProtocol {
     private(set) var buttons: [UIButton] = []
     let spacingSize: CGFloat = 10
     
