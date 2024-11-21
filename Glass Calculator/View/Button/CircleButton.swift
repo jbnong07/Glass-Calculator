@@ -22,6 +22,7 @@ class CircleButton: UIButton {
         setTitleColor(.white.withAlphaComponent(0.9), for: .normal)
         backgroundColor = .lightGray.withAlphaComponent(alpha)
         translatesAutoresizingMaskIntoConstraints = false
+        
     }
 }
 

@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let contentView = ContentView()
+    private var calculatorData: CalculatorData = CalculatorData()
+    private lazy var contentView = ContentView(calculatorData: calculatorData)
     private let backgroundView = BackgroundView()
     
     override func viewDidLoad() {
@@ -19,7 +20,11 @@ class ViewController: UIViewController {
     }
     
 }
-
+extension ViewController {//UI업데이트
+    func updateData() {
+        
+    }
+}
 extension ViewController {//버튼 메서드
     func setButtonMethod() {
         for row in contentView.mainStack.rows {
@@ -30,6 +35,7 @@ extension ViewController {//버튼 메서드
     }
     
     @objc func buttonTabbed(_ sender: UIButton) {//object-c 런타임에서 호출되기 때문에 반드시 @objc를 붙여야 함.
+        contentView.display.displayLabel.updateDisplayNum(newNum: Double(String(calculatorData.displayNumber) + (sender.titleLabel?.text ?? "")) ?? calculatorData.displayNumber)
         print("\(String(describing: sender.titleLabel?.text)) was tabbed")
     }
 }

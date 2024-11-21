@@ -5,7 +5,7 @@
 //  Created by 박진홍 on 11/18/24.
 //
 
-enum CalculatorState{
+enum CalculatorState {
     case idle
     case firstOperandInputed
     case operatorSelected
