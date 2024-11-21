@@ -41,7 +41,7 @@ extension Buttons {
     static func from(title: String) -> Buttons? {
         switch title {
         case "1":
-            return Buttons.number(.one)
+            return .number(.one)
         case "2":
             return .number(.two)
         case "3":

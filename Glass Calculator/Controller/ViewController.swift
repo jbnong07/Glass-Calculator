@@ -33,8 +33,9 @@ extension ViewController {//버튼 메서드
             }
         }
     }
-    
-    @objc func buttonTabbed(_ sender: UIButton) {//object-c 런타임에서 호출되기 때문에 반드시 @objc를 붙여야 함.
+    //object-c 런타임에서 호출되기 때문에 반드시 @objc를 붙여야 함.
+    @objc func buttonTabbed(_ sender: UIButton) {
+        self.calculatorData.calculate(title: sender.titleLabel?.text)
         contentView.display.displayLabel.updateDisplayNum(newNum: Double(String(calculatorData.displayNumber) + (sender.titleLabel?.text ?? "")) ?? calculatorData.displayNumber)
         print("\(String(describing: sender.titleLabel?.text)) was tabbed")
     }
