@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class RowStack: UIStackView {
+class RowStack: UIStackView, ButtonStackProtocol  {
     private(set) var buttons: [UIButton] = []
     let spacingSize: CGFloat = 10
     

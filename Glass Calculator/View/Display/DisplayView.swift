@@ -37,8 +37,12 @@ class DisplayView: UIView {
     }
     
 
-    // 텍스트를 업데이트하는 메서드
     func updateDisplay(with text: String) {
-        displayLabel.text = text
+        if displayLabel.text?.first == "0" {
+            displayLabel.text = text
+        } else {
+            displayLabel.text? += text
+        }
+        
     }
 }

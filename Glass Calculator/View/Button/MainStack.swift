@@ -14,7 +14,7 @@ class MainStack: UIStackView {
         ["7", "8", "9", "×"]
     ]
     private let zeroRowButtons: [String] = ["0", ".", "="]
-    private(set) var rows: [UIStackView] = []
+    private(set) var rows: [ButtonStackProtocol] = []
     
     init() {
         super.init(frame: .zero)

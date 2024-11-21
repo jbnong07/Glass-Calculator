@@ -17,7 +17,7 @@ class DisplayLabel: UILabel {
     }
     
     private func setLabel(){
-        text = "123456789"
+        text = "0"
         textAlignment = .right
         font = UIFont.systemFont(ofSize: 60, weight: .bold)
         textColor = .white.withAlphaComponent(0.9)
