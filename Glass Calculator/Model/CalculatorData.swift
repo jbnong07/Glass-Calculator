@@ -113,7 +113,7 @@ extension CalculatorData {
 }
 
 extension CalculatorData {
-    private func numberTapped(text: String) {
+    private func numberTapped(num: String) {
         /*
          1. displayNumber에 이어붙인다.
          2. displayNumber가 0이면 바로 해당 text로 교체
@@ -123,14 +123,14 @@ extension CalculatorData {
          */
         if self.statusData.opratorIsSelected == true {
             if self.statusData.isSecondOperandFirstNum == true {
-                self.statusData.displayNumber = text
+                self.statusData.displayNumber = num
             } else {
-                self.statusData.displayNumber += text
+                self.statusData.displayNumber += num
             }
         } else if self.statusData.displayNumber == "0" {
-            self.statusData.displayNumber = text
+            self.statusData.displayNumber = num
         } else {
-            self.statusData.displayNumber += text
+            self.statusData.displayNumber += num
         }
     }
     
@@ -160,6 +160,10 @@ extension CalculatorData {
     
     private func clearTapped() {
         self.statusData.displayNumber = "0"
+    }
+    
+    private func operatorTapped(symbol: String) {
+        
     }
 }
 
