@@ -70,7 +70,7 @@ extension CalculatorData {
             },
             .number(.dot): { [weak self] in
                 guard let self = self else { return }
-                
+                self.dotTapped()
             },
             .symbol(.plus): { [weak self] in
                 guard let self = self else { return }
@@ -94,7 +94,7 @@ extension CalculatorData {
             },
             .symbol(.percent): { [weak self] in
                 guard let self = self else { return }
-                
+                self.percentTapped()
             },
             .symbol(.negate): { [weak self] in
                 guard let self = self else { return }
@@ -120,22 +120,41 @@ extension CalculatorData {
          3. 0이 아니면 +로 이어붙이기
          4. 연산자가 눌린 상태일 때는 다시 2번처럼 text로 교체
          5. 근데 눌린 상태더라도 첫 숫자만 2번처럼 교체하고 이후로는 3번처럼 +로 붙인다.
-         그럼 첫 숫자인지 어떻게 알아
-         그리고 애초에 연산자가 눌렸는지를 어떻게 알아 변수 추가해야지 뭐
          */
-        
         if self.statusData.opratorIsSelected == true {
             if self.statusData.isSecondOperandFirstNum == true {
-                
+                self.statusData.displayNumber = text
             } else {
-                
+                self.statusData.displayNumber += text
             }
         } else if self.statusData.displayNumber == "0" {
             self.statusData.displayNumber = text
         } else {
             self.statusData.displayNumber += text
         }
-        
+    }
+    
+    private func dotTapped() {
+        /*
+         .은 기존에 .이 없다면 .붙이는 것으로 끝
+         */
+        if self.statusData.displayNumber.contains(".") { return }
+        self.statusData.displayNumber += "."
+    }
+    
+    private func percentTapped() {
+        //0.01을 계속 곱하기. 0인 경우엔 0
+        if let num = Double(self.statusData.displayNumber) {
+            if num != 0 {
+                self.statusData.displayNumber = String(num * 0.01)
+            }
+        }
+    }
+    
+    private func negateTapped() {
+        if let num = Double(self.statusData.displayNumber) {
+            self.statusData.displayNumber = String(num * -1)
+        }
     }
 }
 
