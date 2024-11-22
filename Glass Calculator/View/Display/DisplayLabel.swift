@@ -27,6 +27,31 @@ class DisplayLabel: UILabel {
 
 extension DisplayLabel {
     func updateDisplayNum(newNum: String) {
-        self.text = String(newNum)
+        self.text = formatNum(num: newNum)
+    }
+    
+    private func formatNum(num: String) -> String {
+        let splitNum = num.split(separator: ".")
+        let intPart: Substring.SubSequence = splitNum[0]
+        let decimalPart: Substring.SubSequence? = (splitNum.count > 1 ? splitNum[1] : nil)
+        var commaFormatString: String = ""
+        var commaCount: Int = 0
+        
+        for num in intPart.reversed() {
+            if commaCount == 3 {
+                commaFormatString.append(",")
+                commaCount = 0
+            }
+            commaFormatString.append(num)
+            commaCount += 1
+        }
+        
+        if let decimalPart = decimalPart {
+            commaFormatString = String(commaFormatString.reversed() + "." + String(decimalPart))
+        } else {
+            commaFormatString = String(commaFormatString.reversed())
+        }
+        
+        return commaFormatString
     }
 }

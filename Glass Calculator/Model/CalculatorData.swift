@@ -229,7 +229,12 @@ extension CalculatorData {
 extension CalculatorData {
     private func formatNum(num: Double) -> String {
         let formattedNum = (num == floor(num) ? String(Int(num)) : String(num))
-        let croppedNum = String(formattedNum.prefix(8))
+        let croppedNum: String
+        if formattedNum.contains(".") {
+            croppedNum = String(formattedNum.prefix(10))
+        } else {
+            croppedNum = String(formattedNum.prefix(9))
+        }
         
         return croppedNum
     }
