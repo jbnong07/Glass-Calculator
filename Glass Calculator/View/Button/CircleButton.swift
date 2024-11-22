@@ -20,6 +20,7 @@ class CircleButton: UIButton {
         setTitle(title, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 36, weight: .medium)
         setTitleColor(.white.withAlphaComponent(0.9), for: .normal)
+        setTitleColor(.black.withAlphaComponent(0.9), for: .highlighted)
         backgroundColor = .lightGray.withAlphaComponent(alpha)
         translatesAutoresizingMaskIntoConstraints = false
         
