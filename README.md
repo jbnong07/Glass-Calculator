@@ -2,15 +2,15 @@
 글래스모피즘 느낌의 버튼을 적용한 옛날 아이폰 계산기
 
 ## 미구현 기능
-- 글래스 모피즘을 위한 블러처리(https://github.com/gabrieltheodoropoulos/GTBlurView)
-- 디스플레이에 표시되는 글자에 따른 글자 크기의 동적 변화
-- 디스플레이에 표시될 텍스트의 폰트 변경
-- AC/C 버튼
-- 연산자 클릭 시 연산처리 전까지 클릭상태를 표시하는 피드백(색상 변경 후 유지) 추가
+- [ ] 글래스 모피즘을 위한 블러처리(https://github.com/gabrieltheodoropoulos/GTBlurView)
+- [ ] 디스플레이에 표시되는 글자에 따른 글자 크기의 동적 변화
+- [ ] 디스플레이에 표시될 텍스트의 폰트 변경
+- [ ] AC/C 버튼
+- [ ] 연산자 클릭 시 연산처리 전까지 클릭상태를 표시하는 피드백(색상 변경 후 유지) 추가
 
 
 ## 필요한 리팩터링
-- RowStack과 ZeroRowStack을 병합한 뒤 ButtonStackProtocol 삭제
+- [x] ~~RowStack과 ZeroRowStack을 병합한 뒤 ButtonStackProtocol 삭제~~ 11.24
 
 
 ## 과제 목표
