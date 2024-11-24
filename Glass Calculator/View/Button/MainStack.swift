@@ -7,19 +7,12 @@
 import UIKit
 
 class MainStack: UIStackView {
-    private let buttonsArr: [[String]] = [
-        ["C", "±", "%", "÷"],
-        ["1", "2", "3", "+"],
-        ["4", "5", "6", "-"],
-        ["7", "8", "9", "×"],
-        ["0", ".", "="]
-    ]
+    private let buttonTitles: [[String]] = Buttons.getButtonTitles()
     private(set) var rows: [RowStack] = []
-    
     init() {
         super.init(frame: .zero)
         setStack()
-        setButtonRow(buttonsArr: buttonsArr)
+        setButtonRow(buttonsArr: buttonTitles)
     }
     
     required init(coder: NSCoder) {

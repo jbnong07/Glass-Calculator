@@ -35,6 +35,57 @@ enum Buttons: Equatable, Hashable {
         case clear
         case allClear
     }
+    
+    var buttonTitle: String {
+        switch self {
+        case .number(let number):
+            switch number {
+            case .one:
+                return "1"
+            case .two:
+                return "2"
+            case .three:
+                return "3"
+            case .four:
+                return "4"
+            case .five:
+                return "5"
+            case .six:
+                return "6"
+            case .seven:
+                return "7"
+            case .eight:
+                return "8"
+            case .nine:
+                return "9"
+            case .zero:
+                return "0"
+            case .dot:
+                return "."
+            }
+        case .symbol(let symbol):
+            switch symbol {
+            case .plus:
+                return "+"
+            case .minus:
+                return "-"
+            case .multiply:
+                return "×"
+            case .divide:
+                return "÷"
+            case .equal:
+                return "="
+            case .percent:
+                return "%"
+            case .negate:
+                return "±"
+            case .clear:
+                return "C"
+            case .allClear:
+                return "AC"
+            }
+        }
+    }
 }
 
 extension Buttons {
@@ -85,6 +136,19 @@ extension Buttons {
         }
     }
     
+    static func getButtonTitles() -> [[String]]{
+        let rows: [[Buttons]] = [
+            [.symbol(.clear), .symbol(.negate), .symbol(.percent), .symbol(.divide)],
+            [.number(.one), .number(.two), .number(.three), .symbol(.plus)],
+            [.number(.four), .number(.five), .number(.six), .symbol(.minus)],
+            [.number(.seven), .number(.eight), .number(.nine), .symbol(.multiply)],
+            [.number(.zero), .number(.dot), .symbol(.equal)]
+        ]
+        return rows.map { row in
+            row.map { $0.buttonTitle }
+        }
+    }
+    
     func hash(into hasher: inout Hasher) {
         switch self {
         case .number(let number):
@@ -95,7 +159,7 @@ extension Buttons {
             hasher.combine(symbol)
         }
     }
-
+    
     static func == (lhs: Buttons, rhs: Buttons) -> Bool {
         switch (lhs, rhs) {
         case (.number(.one), .number(.one)):
