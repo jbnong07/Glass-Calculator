@@ -26,49 +26,9 @@ final class CalculatorData {
 }
 
 extension CalculatorData {
-    private func getCalculateDictionary(text: String) -> [Buttons : () -> Void] {
-        return [
-            .number(.one): {[weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.two): {[weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.three): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.four): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.five): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.six): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.seven): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.eight): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.nine): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.zero): { [weak self] in
-                guard let self = self else { return }
-                self.numberTapped(num: text)
-            },
-            .number(.dot): { [weak self] in
+    private func getCalculateDictionary(text: String) -> [Buttons: () -> Void] {
+        var dictionary: [Buttons: () -> Void] = [
+            .symbol(.dot): { [weak self] in
                 guard let self = self else { return }
                 self.dotTapped()
             },
@@ -106,9 +66,16 @@ extension CalculatorData {
             },
             .symbol(.allClear): { [weak self] in
                 guard let self = self else { return }
-                
             }
         ]
+        Buttons.Numbers.allCases.forEach { number in
+            dictionary[.number(number)] = {[weak self] in
+                guard let self = self else { return }
+                self.numberTapped(num: text)
+            }
+        }
+        
+        return dictionary
     }
 }
 
